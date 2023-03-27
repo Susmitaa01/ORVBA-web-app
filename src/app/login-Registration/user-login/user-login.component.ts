@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/_services/user.service';
 
 @Component({
   selector: 'app-user-login',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserLoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService:UserService,private router:Router) { }
 
   ngOnInit(): void {
+  }
+   
+  username;
+  password;
+
+  loginUser(){
+    this.userService.login(this.username,this.password)
+    .subscribe((result: any) => {
+      
+      console.log('[+] mechanics assigned')
+  })
   }
 
 }

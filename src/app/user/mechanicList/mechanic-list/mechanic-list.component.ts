@@ -17,7 +17,7 @@ export class MechanicListComponent implements OnInit {
   searchInitiated(searchValue: string) {
     this.searchTerm = searchValue
     console.log(this.searchTerm)
-    this.userService.getPosts(this.searchTerm)
+    this.userService.searchMechanics(this.searchTerm)
     .subscribe((result: any) => {
       
         this.mechanics = result
