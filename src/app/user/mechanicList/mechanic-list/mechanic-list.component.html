@@ -1,0 +1,34 @@
+<div class="container-fluid page">
+    <div class="d-flex page__box p-3 mt-2">Mechanic List</div>
+    <div class="page__content shadow p-3 position-relative">
+      <div class="">
+        <div class="container">
+          <app-search-bar (searchInitiated)="searchInitiated($event)"></app-search-bar>
+          <br/>
+          <div *ngIf="searchTerm; else notSearchedYet">
+              <span>
+                  showing reults for {{searchTerm}}
+              </span>
+              <hr/>
+              <div>
+                  <app-mechanic-list-item
+                      *ngFor="let mechanic of mechanics"
+                      [mechanicid]="mechanic['mechanicid']"
+                      [mechanicName]="mechanic['mechanicName']"
+                      [mechanicPhoneNumber]="mechanic['mechanicPhoneNumber']"
+                      [mechanicEmailId]="mechanic['mechanicEmailId']"
+                      [mechanicLocation]="mechanic['mechanicLocation']"
+                  ></app-mechanic-list-item>
+              </div>
+          </div>
+      
+          <ng-template #notSearchedYet>
+              <div style="margin-top: 15px;">
+                  <h3>Search Location to get mechanics in that location...</h3>
+              </div>
+          </ng-template>
+      </div>
+      </div>
+    </div>
+  </div>
+  
